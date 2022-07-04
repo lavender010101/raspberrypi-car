@@ -7,6 +7,7 @@ AIN2 = 13
 
 pwmB = 16
 BIN1 = 22
+BIN1 = 23
 BIN2 = 18
 # sensor settings
 

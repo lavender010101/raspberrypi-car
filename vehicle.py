@@ -33,6 +33,7 @@ class Vehicle:
         GPIO.output(self.BIN2, False)  # BIN2
 
         time.sleep(interval)
+        return 'forward'
 
     def backward(self, speed, interval):
         self.L_Motor.ChangeDutyCycle(speed)
@@ -44,13 +45,13 @@ class Vehicle:
         GPIO.output(self.BIN2, True)  # BIN2
 
         time.sleep(interval)
-        pass
+        return 'backward'
 
     def turn_left(self, speed, interval):
-        pass
+        return 'turn_left'
 
     def turn_right(self, speed, interval):
-        pass
+        return 'turn_right'
 
     def stop(self, interval):
         self.L_Motor.ChangeDutyCycle(0)
@@ -62,3 +63,7 @@ class Vehicle:
         GPIO.output(self.BIN2, False)  # BIN2
 
         time.sleep(interval)
+        return 'stop'
+
+    def status(self):
+        pass
