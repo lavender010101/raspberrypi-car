@@ -48,6 +48,14 @@ class Vehicle:
         return 'backward'
 
     def turn_left(self, speed, interval):
+        self.L_Motor.ChangeDutyCycle(speed)
+        GPIO.output(self.AIN1, False)  #AIN1
+        GPIO.output(self.AIN2, True)  #AIN2
+
+        self.R_Motor.ChangeDutyCycle(speed)
+        GPIO.output(self.BIN1, True)  #BIN1
+        GPIO.output(self.BIN2, False)  #BIN2
+        time.sleep(interval)
         return 'turn_left'
 
     def turn_right(self, speed, interval):
