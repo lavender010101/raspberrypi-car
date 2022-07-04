@@ -16,7 +16,7 @@ class Sensor:
         GPIO.setup(IR_F_2, GPIO.IN)
         GPIO.setup(IR_F_3, GPIO.IN)
 
-    def check_front():
+    def check_front(self):
         if GPIO.input(self.IR_F_1):
             print("--------------- 1 --------------")
         if GPIO.input(self.IR_F_3):
