@@ -15,12 +15,12 @@ class Vehicle:
 
         self.AIN1 = AIN1
         self.AIN2 = AIN2
-        self.L_Motor = GPIO.PWM(pwmA)
+        self.L_Motor = GPIO.PWM(pwmA, 100)
         self.L_Motor.start(0)
 
         self.BIN1 = BIN1
         self.BIN2 = BIN2
-        self.R_Motor = GPIO.PWM(pwmB)
+        self.R_Motor = GPIO.PWM(pwmB, 100)
         self.R_Motor.start(0)
 
     def forward(self, speed, time):
