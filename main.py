@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 from vehicle import *
 from sensor import *
+import os
 
 pwmA = 12
 AIN1 = 15
@@ -33,6 +34,9 @@ if __name__ == '__main__':
         while True:
             sensor.check_front()
             time.sleep(1)
+
+            os.system('clear')
+
             # car.forward(60, 0)
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")
