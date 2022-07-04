@@ -26,7 +26,8 @@ if __name__ == '__main__':
         while True:
             # car.forward(40, 0)
             # car.backward(100, 0)
-            car.turn_left(40, 0)
+            # car.turn_left(40, 0)
+            car.turn_right(40, 0)
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")
     finally:

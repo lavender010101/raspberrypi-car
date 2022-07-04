@@ -59,6 +59,14 @@ class Vehicle:
         return 'turn_left'
 
     def turn_right(self, speed, interval):
+        self.L_Motor.ChangeDutyCycle(speed)
+        GPIO.output(self.AIN1, True)  #AIN1
+        GPIO.output(self.AIN2, False)  #AIN2
+
+        self.R_Motor.ChangeDutyCycle(speed)
+        GPIO.output(self.BIN1, False)  #BIN1
+        GPIO.output(self.BIN2, True)  #BIN2
+        time.sleep(interval)
         return 'turn_right'
 
     def stop(self, interval):
