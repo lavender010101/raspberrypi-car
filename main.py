@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
 import Vehicle
 
-BIN2 = 18
+pwmA = 12
 AIN1 = 15
 AIN2 = 13
 
