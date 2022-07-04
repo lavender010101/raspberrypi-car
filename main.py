@@ -11,7 +11,7 @@ BIN2 = 18
 # sensor settings
 
 
-class Vehicle:
+class Vehicle(object):
 
     def __int__(self, pwmA, AIN1, AIN2, pwmB, BIN1, BIN2):
         GPIO.setup(pwmA, GPIO.OUT)
@@ -73,6 +73,7 @@ def global_setup():
 if __name__ == '__main__':
     global_setup()
     car = Vehicle()
+    # car = Vehicle()
     try:
         while True:
             car.forward(20)
