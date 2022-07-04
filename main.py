@@ -1,10 +1,13 @@
 import RPi.GPIO as GPIO
 import Vehicle
 
+BIN2 = 18
+AIN1 = 15
+AIN2 = 13
 
-# wheels settings
-
-
+pwmB = 16
+BIN1 = 22
+BIN2 = 18
 # sensor settings
 
 
@@ -16,7 +19,7 @@ def global_setup():
 
 if __name__ == '__main__':
     global_setup()
-    car = Vehicle()
+    car = Vehicle(pwmA, AIN1, AIN2, pwmB, BIN1, BIN2)
     try:
         while True:
             car.forward(20)
