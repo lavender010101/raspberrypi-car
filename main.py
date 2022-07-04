@@ -33,14 +33,14 @@ if __name__ == '__main__':
     try:
         while True:
             if sensor.check_front() == 'forward':
-                car.forward(25, 0)
+                car.forward(28, 0)
             elif sensor.check_front() == 'stop':
                 car.stop(0)
             elif sensor.check_front() == 'turn_left':
-                car.turn_left(20, 0)
+                car.turn_left(23, 0)
             elif sensor.check_front() == 'turn_right':
-                car.turn_right(20, 0)
-            time.sleep(0.05)
+                car.turn_right(23, 0)
+            time.sleep(0.01)
 
             os.system('clear')
 
