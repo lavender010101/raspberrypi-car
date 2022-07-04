@@ -24,7 +24,8 @@ if __name__ == '__main__':
     # car = Vehicle()
     try:
         while True:
-            car.forward(40, 0)
+            # car.forward(40, 0)
+            car.backward(40, 0)
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")
     finally:
