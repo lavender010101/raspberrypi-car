@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-import Vehicle
+from Vehicle import *
 
 pwmA = 12
 AIN1 = 15

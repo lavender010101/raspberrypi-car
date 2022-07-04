@@ -1,7 +1,8 @@
 import RPi.GPIO as GPIO
 
 
-class Vehicle:
+class Vehicle():
+
     def __int__(self, pwmA, AIN1, AIN2, pwmB, BIN1, BIN2):
         GPIO.setup(pwmA, GPIO.OUT)
         GPIO.setup(AIN1, GPIO.OUT)
