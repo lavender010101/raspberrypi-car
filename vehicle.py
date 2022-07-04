@@ -4,7 +4,7 @@ import time
 
 class Vehicle:
 
-    def __init__(self, pwmA, AIN1, AIN2, pwmB, BIN1, BIN2) -> None:
+    def __init__(self, pwmA, AIN1, AIN2, pwmB, BIN1, BIN2):
         GPIO.setup(pwmA, GPIO.OUT)
         GPIO.setup(AIN1, GPIO.OUT)
         GPIO.setup(AIN2, GPIO.OUT)
