@@ -13,9 +13,9 @@ BIN2 = 18
 # sensor settings
 IR_L = 32
 IR_R = 36
-IR_F_1 = 33
-IR_F_2 = 35
-IR_F_3 = 37
+# IR_F_2 = 35
+IR_F_L = 37
+IR_F_R = 33
 
 
 def global_setup():
@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # car = Vehicle()
     car = Vehicle(pwmA, AIN1, AIN2, pwmB, BIN1, BIN2)
     # car = Vehicle()
-    sensor = Sensor(IR_L, IR_R, IR_F_1, IR_F_2, IR_F_3)
+    sensor = Sensor(IR_L, IR_R, IR_F_L, IR_F_R)
     try:
         while True:
             sensor.check_front()
