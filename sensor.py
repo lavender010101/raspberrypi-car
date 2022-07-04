@@ -22,9 +22,9 @@ class Sensor:
         if left and right:
             return 'forward'
         elif left and not right:
-            return 'turn_left'
-        elif not left and right:
             return 'turn_right'
+        elif not left and right:
+            return 'turn_left'
         elif not left and not right:
             return 'stop'
         # pass

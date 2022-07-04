@@ -40,7 +40,7 @@ if __name__ == '__main__':
                 car.turn_left(20, 0)
             elif sensor.check_front() == 'turn_right':
                 car.turn_right(20, 0)
-            # time.sleep(1)
+            time.sleep(0.13)
 
             os.system('clear')
 
