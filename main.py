@@ -25,7 +25,7 @@ if __name__ == '__main__':
     try:
         while True:
             # car.forward(40, 0)
-            car.backward(200, 0)
+            car.backward(100, 0)
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")
     finally:
