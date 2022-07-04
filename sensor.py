@@ -9,3 +9,18 @@ class Sensor:
         self.IR_F_1 = IR_F_1
         self.IR_F_1 = IR_F_2
         self.IR_F_1 = IR_F_3
+
+        GPIO.setup(IR_L, GPIO.IN)
+        GPIO.setup(IR_R, GPIO.IN)
+        GPIO.setup(IR_F_1, GPIO.IN)
+        GPIO.setup(IR_F_2, GPIO.IN)
+        GPIO.setup(IR_F_3, GPIO.IN)
+
+    def check_front():
+        if GPIO.input(self.IR_F_1):
+            print("--------------- 1 --------------")
+        if GPIO.input(self.IR_F_3):
+            print("--------------- 2 --------------")
+        if GPIO.input(self.IR_F_3):
+            print("--------------- 3 --------------")
+        pass
