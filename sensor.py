@@ -17,10 +17,14 @@ class Sensor:
         GPIO.setup(IR_F_L, GPIO.IN)
 
     def check_front(self):
-        if GPIO.input(self.IR_F_L) == GPIO.LOW:
-            print("--------------- turn right --------------")
-        # if GPIO.input(self.IR_F_2) == GPIO.LOW:
-        #     print("--------------- 2 --------------")
-        if GPIO.input(self.IR_F_R) == GPIO.LOW:
-            print("--------------- turn left --------------")
+        left = GPIO.input(self.IR_F_L) == GPIO.LOW
+        right = GPIO.input(self.IR_F_R) == GPIO.LOW
+        if left and right:
+            return 'forward'
+        elif left and not right:
+            return 'turn_left'
+        elif not left and right:
+            return 'turn_right'
+        elif not left and not right:
+            return 'stop'
         # pass
