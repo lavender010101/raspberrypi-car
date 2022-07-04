@@ -23,7 +23,7 @@ class Vehicle:
         self.R_Motor = GPIO.PWM(pwmB, 100)
         self.R_Motor.start(0)
 
-    def forward(self, speed, time):
+    def forward(self, speed, interval):
         self.L_Motor.ChangeDutyCycle(speed)
         GPIO.output(self.AIN1, True)  # AIN1
         GPIO.output(self.AIN2, False)  # AIN2
@@ -32,7 +32,7 @@ class Vehicle:
         GPIO.output(self.BIN1, True)  # BIN1
         GPIO.output(self.BIN2, False)  # BIN2
 
-        time.sleep(time)
+        time.sleep(interval)
 
 
 #import RPi.GPIO as GPIO
