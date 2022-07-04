@@ -33,6 +33,7 @@ if __name__ == '__main__':
     try:
         while True:
             sensor.check_front()
+            car.forward(20,0)
             time.sleep(1)
 
             os.system('clear')
