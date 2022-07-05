@@ -45,10 +45,11 @@ if __name__ == '__main__':
             #     car.turn_left(23, 0)
             # if sensor.trace_trail() == 'turn_right':
             #     car.turn_right(23, 0)
-            time.sleep(0.013)
+            # time.sleep(0.013)
 
-            os.system('clear')
+            # os.system('clear')
 
+            time.sleep(1)
             # car.forward(60, 0)
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")
