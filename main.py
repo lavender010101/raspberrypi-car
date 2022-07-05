@@ -62,14 +62,16 @@ if __name__ == '__main__':
     global_setup()
     car = Vehicle(pwmA, AIN1, AIN2, pwmB, BIN1, BIN2)
     sensor = Sensor(IR_L, IR_R, IR_F_L, IR_F_R, US_T, US_R)
-    # keysacn(btn_pin)
-    start = False
-    while not start:
-        if GPIO.input(btn_pin) == GPIO.HIGH:
-            start = True
-        time.sleep(0.013)
+
+    # click to start
+    # start = False
+    # while not start:
+    #     if GPIO.input(btn_pin) == GPIO.HIGH:
+    #         start = True
+    #     time.sleep(0.013)
     try:
-        while start:
+        # while start:
+        while True:
             # track(25)
             # avoid(25)
             print(sensor.distance_measure())
