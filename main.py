@@ -36,7 +36,7 @@ def track(speed):
     elif sensor.trace_trail() == 'forward':
         car.forward(speed * 0.8, 0)
     elif sensor.trace_trail() == 'stop':
-        car.forward(speed * 0.4, 0)
+        car.forward(speed * 0.6, 0)
 
     # os.system('clear')
 
