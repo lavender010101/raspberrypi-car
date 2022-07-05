@@ -37,9 +37,11 @@ if __name__ == '__main__':
         while True:
             #            print(sensor.avoid_obstacles())
             if sensor.trace_trail() == 'turn_left':
-                car.turn_left(40, 0)
+                car.backward(15, 0.005)
+                car.backward(15,0.005)
             if sensor.trace_trail() == 'turn_right':
-                car.turn_right(40, 0)
+                car.backward(15, 0.005)
+                car.turn_right(24, 0)
             if sensor.trace_trail() == 'forward':
                 car.forward(28, 0)
             if sensor.trace_trail() == 'stop':
