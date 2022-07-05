@@ -77,7 +77,7 @@ if __name__ == '__main__':
         time.sleep(0.013)
     try:
         while start:
-            track(20)
+            track(25)
             # if GPIO.input(btn_pin) == GPIO.HIGH:
             #     start = False
             #     time.sleep(0.013)
