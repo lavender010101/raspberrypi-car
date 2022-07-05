@@ -27,7 +27,7 @@ btn_pin = 35
 def global_setup():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setwarnings(False)
-    GPIO.setup(btn_pin, GPIO.OUT)
+    GPIO.setup(btn_pin, GPIO.IN)
     pass
 
 
@@ -72,7 +72,7 @@ if __name__ == '__main__':
     # keysacn(btn_pin)
     start = False
     while not start:
-        if GPIO.output(btn_pin) == GPIO.LOW:
+        if GPIO.input(btn_pin) == GPIO.HIGH:
             start = True
         time.sleep(0.013)
     try:
