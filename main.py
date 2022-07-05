@@ -71,7 +71,9 @@ if __name__ == '__main__':
     try:
         while start:
             # track(25)
-            avoid(25)
+            # avoid(25)
+            print(sensor.distance_measure())
+            time.sleep(1)
 
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")

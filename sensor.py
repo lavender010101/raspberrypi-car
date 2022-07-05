@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import time
 
 
 class Sensor:
@@ -39,6 +40,30 @@ class Sensor:
             return 'stop'
 
     # 避障碍
+    def distance_measure(self):
+        GPIO.output(self.US_T, False)
+        time.sleep(0.000002)
+        GPIO.output(self.US_T, True)
+        time.sleep(0.00001)
+        GPIO.output(self.US_T, False)
+
+        miss_target_time = 0
+        while GPIO.input(self.US_R) == 0:
+            miss_target_time += 1
+            if miss_target_time > 10000:
+                print('Missing the echo')
+                return 0
+
+        start_time = time.time()
+
+        while GPIO.input(self.US_R) == 1:
+            pass
+
+        time_span = time.time() - start_time
+
+        # distance = time_span * 340m / 2
+        return time_span * 17150
+
     def avoid_obstacles(self):
         GPIO.output(self.US_T, True)
         front = GPIO.input(self.US_R) == GPIO.LOW
