@@ -46,23 +46,16 @@ def track(speed):
 
 
 def avoid(speed):
-    print(sensor.avoid_obstacles())
-    time.sleep(1)
-
-
-def keysacn(btn_pin):
-    val = GPIO.input(btn_pin)
-    while GPIO.input(btn_pin) == False:
-        val = GPIO.input(btn_pin)
-    while GPIO.input(btn_pin) == True:
-        time.sleep(0.01)
-        val = GPIO.input(btn_pin)
-        # if val == True:
-        #     # GPIO.output(Rpin, 1)
-        #     while GPIO.input(btn_pin) == False:
-        #         GPIO.output(Rpin, 0)
-        # else:
-        #     GPIO.output(Rpin, 0)
+    if sensor.avoid_obstacles() == 'turn_left':
+        car.turn_left(speed, 0)
+    elif sensor.avoid_obstacles() == 'turn_right':
+        car.turn_right(speed, 0)
+    elif sensor.avoid_obstacles() == 'forward':
+        car.forward(speed, 0)
+    elif sensor.avoid_obstacles() == 'backward':
+        # car.forward(speed, 0)
+        car.backward(speed, 0)
+    time.sleep(0.08)
 
 
 if __name__ == '__main__':
@@ -77,11 +70,8 @@ if __name__ == '__main__':
         time.sleep(0.013)
     try:
         while start:
-            track(25)
-            # if GPIO.input(btn_pin) == GPIO.HIGH:
-            #     start = False
-            #     time.sleep(0.013)
-            # avoid(10)
+            # track(25)
+            avoid(25)
 
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")
