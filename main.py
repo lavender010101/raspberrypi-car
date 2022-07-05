@@ -35,8 +35,10 @@ def track(speed):
 
     if sensor.trace_trail() == 'turn_left':
         car.turn_left(speed * 1.2, 0)
+        car.backward(speed*0.8,0.00005)
     elif sensor.trace_trail() == 'turn_right':
         car.turn_right(speed * 1.2, 0)
+        car.backward(speed*0.8,0.00005)
     elif sensor.trace_trail() == 'forward':
         car.forward(speed, 0)
     elif sensor.trace_trail() == 'stop':
