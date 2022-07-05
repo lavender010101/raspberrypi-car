@@ -49,13 +49,13 @@ class Vehicle:
 
     def turn_left(self, speed, interval):
         # backward
-        self.L_Motor.ChangeDutyCycle(speed*1.5)
+        self.L_Motor.ChangeDutyCycle(speed * 1.8)
         # self.L_Motor.ChangeDutyCycle(0)
         GPIO.output(self.AIN1, False)  #AIN1
         GPIO.output(self.AIN2, True)  #AIN2
 
         # forward
-        self.R_Motor.ChangeDutyCycle(speed * 3)
+        self.R_Motor.ChangeDutyCycle(speed)
         GPIO.output(self.BIN1, True)  #BIN1
         GPIO.output(self.BIN2, False)  #BIN2
         time.sleep(interval)
@@ -63,13 +63,13 @@ class Vehicle:
 
     def turn_right(self, speed, interval):
         # forward
-        self.L_Motor.ChangeDutyCycle(speed * 3)
+        self.L_Motor.ChangeDutyCycle(speed)
         GPIO.output(self.AIN1, True)  #AIN1
         GPIO.output(self.AIN2, False)  #AIN2
 
         # backward
         # self.R_Motor.ChangeDutyCycle(speed)
-        self.R_Motor.ChangeDutyCycle(speed * 1.5)
+        self.R_Motor.ChangeDutyCycle(speed * 1.8)
         GPIO.output(self.BIN1, False)  #BIN1
         GPIO.output(self.BIN2, True)  #BIN2
         time.sleep(interval)
