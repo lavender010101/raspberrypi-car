@@ -27,16 +27,16 @@ def global_setup():
     pass
 
 
-def track():
+def track(speed):
 
     if sensor.trace_trail() == 'turn_left':
-        car.turn_left(20, 0)
+        car.turn_left(speed, 0)
     elif sensor.trace_trail() == 'turn_right':
-        car.turn_right(20, 0)
+        car.turn_right(speed, 0)
     elif sensor.trace_trail() == 'forward':
-        car.forward(24, 0)
+        car.forward(speed * 0.8, 0)
     elif sensor.trace_trail() == 'stop':
-        car.forward(18, 0)
+        car.forward(speed * 0.4, 0)
 
     # os.system('clear')
 
@@ -47,7 +47,7 @@ if __name__ == '__main__':
     sensor = Sensor(IR_L, IR_R, IR_F_L, IR_F_R, US_T, US_R)
     try:
         while True:
-            track()
+            track(20)
 
             time.sleep(0.008)
     except KeyboardInterrupt:
