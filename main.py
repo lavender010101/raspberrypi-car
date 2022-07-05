@@ -27,6 +27,7 @@ btn_pin = 35
 def global_setup():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setwarnings(False)
+    GPIO.setup(btn_pin, GPIO.OUT)
     pass
 
 
