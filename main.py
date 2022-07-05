@@ -38,11 +38,12 @@ def track(speed):
     elif sensor.trace_trail() == 'stop':
         car.forward(speed * 0.8, 0)
 
-    # os.system('clear')
+    time.sleep(0.008)
 
 
 def avoid(speed):
     print(sensor.avoid_obstacles())
+    time.sleep(1)
 
 
 if __name__ == '__main__':
@@ -52,7 +53,6 @@ if __name__ == '__main__':
     try:
         while True:
             # track(20)
-            # time.sleep(0.008)
             avoid(10)
 
     except KeyboardInterrupt:
