@@ -52,8 +52,8 @@ if __name__ == '__main__':
     sensor = Sensor(IR_L, IR_R, IR_F_L, IR_F_R, US_T, US_R)
     try:
         while True:
-            # track(20)
-            avoid(10)
+            track(20)
+            # avoid(10)
 
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")
