@@ -17,6 +17,9 @@ IR_R = 36
 IR_F_L = 37
 IR_F_R = 33
 
+US_T = 38
+US_R = 40
+
 
 def global_setup():
     GPIO.setmode(GPIO.BOARD)
@@ -29,18 +32,20 @@ if __name__ == '__main__':
     # car = Vehicle()
     car = Vehicle(pwmA, AIN1, AIN2, pwmB, BIN1, BIN2)
     # car = Vehicle()
-    sensor = Sensor(IR_L, IR_R, IR_F_L, IR_F_R)
+    sensor = Sensor(IR_L, IR_R, IR_F_L, IR_F_R, US_T, US_R)
     try:
         while True:
-            if sensor.check_front() == 'forward':
-                car.forward(28, 0)
-            elif sensor.check_front() == 'stop':
-                car.stop(0)
-            elif sensor.check_front() == 'turn_left':
-                car.turn_left(23, 0)
-            elif sensor.check_front() == 'turn_right':
-                car.turn_right(23, 0)
-            time.sleep(0.01)
+            print(sensor.avoid_obstacles())
+            # if sensor.trace_trail() == 'forward':
+            #     print()
+            #     car.forward(28, 0)
+            # if sensor.trace_trail() == 'stop':
+            #     car.stop(0)
+            # if sensor.trace_trail() == 'turn_left':
+            #     car.turn_left(23, 0)
+            # if sensor.trace_trail() == 'turn_right':
+            #     car.turn_right(23, 0)
+            time.sleep(0.013)
 
             os.system('clear')
 
