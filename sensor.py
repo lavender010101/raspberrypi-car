@@ -23,7 +23,6 @@ class Sensor:
         self.US_R = US_R
         GPIO.setup(US_T, GPIO.OUT)
         GPIO.setup(US_R, GPIO.IN)
-        GPIO.output(US_T, True)
 
     # 寻迹
     def trace_trail(self):
@@ -41,7 +40,7 @@ class Sensor:
 
     # 避障碍
     def avoid_obstacles(self):
-
+        GPIO.output(US_T, True)
         front = GPIO.input(self.US_R) == GPIO.LOW
         left = GPIO.input(self.IR_L) == GPIO.HIGH
         right = GPIO.input(self.IR_R) == GPIO.HIGH
