@@ -43,8 +43,8 @@ class Sensor:
     def avoid_obstacles(self):
 
         front = GPIO.input(self.US_R) == GPIO.LOW
-        left = GPIO.input(self.IR_F_L) == GPIO.HIGH
-        right = GPIO.input(self.IR_F_R) == GPIO.HIGH
+        left = GPIO.input(self.IR_L) == GPIO.HIGH
+        right = GPIO.input(self.IR_R) == GPIO.HIGH
         if left and not right:
             return 'turn_left'
         elif not left and right:
