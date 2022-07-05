@@ -27,7 +27,7 @@ def global_setup():
     pass
 
 
-def track():
+def track(direction):
 
     if sensor.trace_trail() == 'turn_left':
         car.forward(14, 0)
@@ -65,7 +65,7 @@ if __name__ == '__main__':
     try:
         direction = 'forward'
         while True:
-            track()
+            track(direction)
 
 #            time.sleep(1)
 # car.forward(60, 0)
