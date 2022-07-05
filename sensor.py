@@ -21,7 +21,7 @@ class Sensor:
         # ultrasonic
         self.US_T = US_T
         self.US_R = US_R
-        # GPIO.setup(US_T, GPIO.OUT)
+        GPIO.setup(US_T, GPIO.OUT)
         GPIO.setup(US_R, GPIO.IN)
 
     # 寻迹
@@ -40,7 +40,7 @@ class Sensor:
 
     # 避障碍
     def avoid_obstacles(self):
-        # GPIO.output(self.US_T, True)
+        GPIO.output(self.US_T, True)
         front = GPIO.input(self.US_R) == GPIO.LOW
         left = GPIO.input(self.IR_L) == GPIO.HIGH
         right = GPIO.input(self.IR_R) == GPIO.HIGH
