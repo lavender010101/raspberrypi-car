@@ -42,12 +42,12 @@ def track(direction):
 
         direction = 'right'
     if sensor.trace_trail() == 'forward':
-        car.forward(28, 0)
+        car.forward(20, 0)
         direction = 'forward'
 
     if sensor.trace_trail() == 'stop':
         # car.stop(0)
-        car.forward(10, 0)
+        car.forward(18, 0)
         if direction == 'left':
             car.turn_left(24, 0)
         elif direction == 'right':
