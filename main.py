@@ -27,49 +27,29 @@ def global_setup():
     pass
 
 
-def track(direction):
+def track():
 
     if sensor.trace_trail() == 'turn_left':
-        # car.forward(14, 0)
         car.turn_left(24, 0)
-        direction = 'left'
-
-        # if sensor.trace_trail() ==
-
-    if sensor.trace_trail() == 'turn_right':
-        # car.forward(14, 0)
+    elif sensor.trace_trail() == 'turn_right':
         car.turn_right(24, 0)
-
-        direction = 'right'
-    if sensor.trace_trail() == 'forward':
-        car.forward(20, 0)
-        direction = 'forward'
-
-    if sensor.trace_trail() == 'stop':
-        # car.stop(0)
+    elif sensor.trace_trail() == 'forward':
+        car.forward(24, 0)
+    elif sensor.trace_trail() == 'stop':
         car.forward(18, 0)
-        if direction == 'left':
-            car.turn_left(24, 0)
-        elif direction == 'right':
-            car.turn_right(24, 0)
-    time.sleep(0.008)
 
     # os.system('clear')
 
 
 if __name__ == '__main__':
     global_setup()
-    # car = Vehicle()
     car = Vehicle(pwmA, AIN1, AIN2, pwmB, BIN1, BIN2)
-    # car = Vehicle()
     sensor = Sensor(IR_L, IR_R, IR_F_L, IR_F_R, US_T, US_R)
     try:
-        direction = 'forward'
         while True:
-            track(direction)
+            track()
 
-#            time.sleep(1)
-# car.forward(60, 0)
+            time.sleep(0.008)
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")
     finally:
