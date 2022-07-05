@@ -30,14 +30,14 @@ def global_setup():
 def track(direction):
 
     if sensor.trace_trail() == 'turn_left':
-        car.forward(14, 0)
+        # car.forward(14, 0)
         car.turn_left(24, 0)
         direction = 'left'
 
         # if sensor.trace_trail() ==
 
     if sensor.trace_trail() == 'turn_right':
-        car.forward(14, 0)
+        # car.forward(14, 0)
         car.turn_right(24, 0)
 
         direction = 'right'
@@ -46,11 +46,11 @@ def track(direction):
         direction = 'forward'
 
     if sensor.trace_trail() == 'stop':
+        car.stop(0)
         if direction == 'left':
             car.turn_left(24, 0)
         elif direction == 'right':
             car.turn_right(24, 0)
-        car.stop(0)
     time.sleep(0.003)
 
     # os.system('clear')
