@@ -35,22 +35,21 @@ if __name__ == '__main__':
     sensor = Sensor(IR_L, IR_R, IR_F_L, IR_F_R, US_T, US_R)
     try:
         while True:
-            print(sensor.avoid_obstacles())
-            # if sensor.trace_trail() == 'forward':
-            #     print()
-            #     car.forward(28, 0)
-            # if sensor.trace_trail() == 'stop':
-            #     car.stop(0)
-            # if sensor.trace_trail() == 'turn_left':
-            #     car.turn_left(23, 0)
-            # if sensor.trace_trail() == 'turn_right':
-            #     car.turn_right(23, 0)
-            # time.sleep(0.013)
+            #            print(sensor.avoid_obstacles())
+            if sensor.trace_trail() == 'forward':
+                car.forward(28, 0)
+            if sensor.trace_trail() == 'stop':
+                car.stop(0)
+            if sensor.trace_trail() == 'turn_left':
+                car.turn_left(23, 0)
+            if sensor.trace_trail() == 'turn_right':
+                car.turn_right(23, 0)
+            time.sleep(0.013)
 
             # os.system('clear')
 
-            time.sleep(1)
-            # car.forward(60, 0)
+#            time.sleep(1)
+# car.forward(60, 0)
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")
     finally:
