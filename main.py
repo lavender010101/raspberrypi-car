@@ -41,15 +41,20 @@ def track(speed):
     # os.system('clear')
 
 
+def avoid(speed):
+    print(sensor.avoid_obstacles())
+
+
 if __name__ == '__main__':
     global_setup()
     car = Vehicle(pwmA, AIN1, AIN2, pwmB, BIN1, BIN2)
     sensor = Sensor(IR_L, IR_R, IR_F_L, IR_F_R, US_T, US_R)
     try:
         while True:
-            track(20)
+            # track(20)
+            # time.sleep(0.008)
+            avoid(10)
 
-            time.sleep(0.008)
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")
     finally:
