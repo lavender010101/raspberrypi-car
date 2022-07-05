@@ -27,6 +27,35 @@ def global_setup():
     pass
 
 
+def track():
+
+    if sensor.trace_trail() == 'turn_left':
+        car.forward(14, 0)
+        car.turn_left(24, 0)
+        direction = 'left'
+
+        # if sensor.trace_trail() ==
+
+    if sensor.trace_trail() == 'turn_right':
+        car.forward(14, 0)
+        car.turn_right(24, 0)
+
+        direction = 'right'
+    if sensor.trace_trail() == 'forward':
+        car.forward(28, 0)
+        direction = 'forward'
+
+    if sensor.trace_trail() == 'stop':
+        if direction == 'left':
+            car.turn_left(24, 0)
+        elif direction == 'right':
+            car.turn_right(24, 0)
+        # car.stop(0)
+    time.sleep(0.003)
+
+    # os.system('clear')
+
+
 if __name__ == '__main__':
     global_setup()
     # car = Vehicle()
@@ -36,32 +65,7 @@ if __name__ == '__main__':
     try:
         direction = 'forward'
         while True:
-            #            print(sensor.avoid_obstacles())
-            if sensor.trace_trail() == 'turn_left':
-                car.forward(14, 0)
-                car.turn_left(24, 0)
-                direction = 'left'
-
-                # if sensor.trace_trail() ==
-
-            if sensor.trace_trail() == 'turn_right':
-                car.forward(14, 0)
-                car.turn_right(24, 0)
-
-                direction = 'right'
-            if sensor.trace_trail() == 'forward':
-                car.forward(28, 0)
-                direction = 'forward'
-
-            if sensor.trace_trail() == 'stop':
-                if direction == 'left':
-                    car.turn_left(24, 0)
-                elif direction == 'right':
-                    car.turn_right(24, 0)
-                car.stop(0)
-            time.sleep(0.003)
-
-            # os.system('clear')
+            track()
 
 #            time.sleep(1)
 # car.forward(60, 0)
