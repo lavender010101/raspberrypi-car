@@ -50,7 +50,7 @@ def track(direction):
             car.turn_left(24, 0)
         elif direction == 'right':
             car.turn_right(24, 0)
-        # car.stop(0)
+        car.stop(0)
     time.sleep(0.003)
 
     # os.system('clear')
