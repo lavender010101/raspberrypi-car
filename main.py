@@ -57,19 +57,24 @@ def keysacn(btn_pin):
     while GPIO.input(btn_pin) == True:
         time.sleep(0.01)
         val = GPIO.input(btn_pin)
-        if val == True:
-            GPIO.output(Rpin, 1)
-            while GPIO.input(btn_pin) == False:
-                GPIO.output(Rpin, 0)
-        else:
-            GPIO.output(Rpin, 0)
+        # if val == True:
+        #     # GPIO.output(Rpin, 1)
+        #     while GPIO.input(btn_pin) == False:
+        #         GPIO.output(Rpin, 0)
+        # else:
+        #     GPIO.output(Rpin, 0)
 
 
 if __name__ == '__main__':
     global_setup()
     car = Vehicle(pwmA, AIN1, AIN2, pwmB, BIN1, BIN2)
     sensor = Sensor(IR_L, IR_R, IR_F_L, IR_F_R, US_T, US_R)
-    keysacn(btn_pin)
+    # keysacn(btn_pin)
+    start = False
+    while not start:
+        if GPIO.output(btn_pin) == GPIO.LOW:
+            start = True
+        time.sleep(0.013)
     try:
         while True:
             track(20)
