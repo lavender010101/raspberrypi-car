@@ -76,8 +76,11 @@ if __name__ == '__main__':
             start = True
         time.sleep(0.013)
     try:
-        while True:
+        while start:
             track(20)
+            if GPIO.input(btn_pin) == GPIO.HIGH:
+                start = False
+                time.sleep(0.013)
             # avoid(10)
 
     except KeyboardInterrupt:
