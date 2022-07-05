@@ -34,19 +34,32 @@ if __name__ == '__main__':
     # car = Vehicle()
     sensor = Sensor(IR_L, IR_R, IR_F_L, IR_F_R, US_T, US_R)
     try:
+        direction = 'forward'
         while True:
             #            print(sensor.avoid_obstacles())
             if sensor.trace_trail() == 'turn_left':
-                car.stop(0)
+                car.forward(14, 0)
                 car.turn_left(24, 0)
+                direction = 'left'
+
+                # if sensor.trace_trail() ==
+
             if sensor.trace_trail() == 'turn_right':
-                car.stop(0)
+                car.forward(14, 0)
                 car.turn_right(24, 0)
+
+                direction = 'right'
             if sensor.trace_trail() == 'forward':
                 car.forward(28, 0)
+                direction = 'forward'
+
             if sensor.trace_trail() == 'stop':
+                if direction == 'left':
+                    car.turn_left(24, 0)
+                elif direction == 'right':
+                    car.turn_right(24, 0)
                 car.stop(0)
-            time.sleep(0.005)
+            time.sleep(0.003)
 
             # os.system('clear')
 
