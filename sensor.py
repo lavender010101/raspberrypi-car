@@ -21,9 +21,9 @@ class Sensor:
         # ultrasonic
         self.US_T = US_T
         self.US_R = US_R
-        GPIO.output(US_T, True)
         GPIO.setup(US_T, GPIO.OUT)
         GPIO.setup(US_R, GPIO.IN)
+        GPIO.output(US_T, True)
 
     # 寻迹
     def trace_trail(self):
