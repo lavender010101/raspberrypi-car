@@ -76,7 +76,7 @@ class Sensor:
 
         # front distance (cm)
         distance = self.distance_measure()
-        # print("%.2f cm" % distance)
+        print("%.2f cm" % distance)
 
         if distance < 4:
             return 'backward'

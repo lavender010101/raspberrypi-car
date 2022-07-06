@@ -55,6 +55,8 @@ def avoid(speed):
     elif sensor.avoid_obstacles() == 'backward':
         # car.forward(speed, 0)
         car.backward(speed, 0)
+    elif sensor.avoid_obstacles() == 'slow_forward':
+        car.forward(speed * 0.8, 0)
     time.sleep(0.08)
 
 
