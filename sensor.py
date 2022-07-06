@@ -47,14 +47,14 @@ class Sensor:
         time.sleep(0.00001)
         GPIO.output(self.US_T, False)
 
+        start_time = time.time()
+
         miss_target_time = 0
         while GPIO.input(self.US_R) == 0:
             miss_target_time += 1
             if miss_target_time > 10000:
                 print('Missing the echo')
                 return 0
-
-        start_time = time.time()
 
         while GPIO.input(self.US_R) == 1:
             pass
@@ -65,19 +65,26 @@ class Sensor:
         return time_span * 17150
 
     def avoid_obstacles(self):
-        GPIO.output(self.US_T, True)
-        front = GPIO.input(self.US_R) == GPIO.LOW
+        # GPIO.output(self.US_T, True)
+        # front = GPIO.input(self.US_R) == GPIO.LOW
         left = GPIO.input(self.IR_L) == GPIO.HIGH
         right = GPIO.input(self.IR_R) == GPIO.HIGH
         if left and not right:
             return 'turn_left'
         elif not left and right:
             return 'turn_right'
-        elif not left and not right:
+
+        # front distance (cm)
+        distance = self.distance_measure()
+
+        if distance < 2:
             return 'backward'
-        elif left and right:
+        elif distance > 5:
             return 'forward'
-        # if front:
-        #     return 'forward'
-        # else:
+        else:
+            return 'slow_forward'
+
+        # if not left and not right:
         #     return 'backward'
+        # if left and right:
+        #     return 'forward'
