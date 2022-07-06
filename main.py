@@ -1,7 +1,8 @@
 import RPi.GPIO as GPIO
 from vehicle import *
 from sensor import *
-import os
+from servo import *
+import Adafruit_PCA9685
 
 pwmA = 12
 AIN1 = 15
@@ -28,6 +29,13 @@ def global_setup():
     GPIO.setmode(GPIO.BOARD)
     GPIO.setwarnings(False)
     GPIO.setup(btn_pin, GPIO.IN)
+    global pwm
+    pwm = Adafruit_PCA9685.PCA9685()
+    pwm.set_pwm_freq(50)
+
+
+def servo_control():
+
     pass
 
 
@@ -74,6 +82,8 @@ if __name__ == '__main__':
     car = Vehicle(pwmA, AIN1, AIN2, pwmB, BIN1, BIN2)
     sensor = Sensor(IR_L, IR_R, IR_F_L, IR_F_R, US_T, US_R)
 
+    servo1 = Servo(12)
+
     start = False
     # click to start
     button_switch()
@@ -82,9 +92,11 @@ if __name__ == '__main__':
         while start:
             # while True:
             # track(25)
-            avoid(25, 13)
+            # avoid(25, 13)
             # print("%.2f cm" % sensor.distance_measure())
             # print(sensor.avoid_obstacles())
+
+            servo1.set_angle(pwm, 10)
             time.sleep(1)
 
     except KeyboardInterrupt:
