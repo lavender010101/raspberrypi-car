@@ -105,4 +105,5 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")
     finally:
+        pwm.write(pwm.__MODE1, 0x00)
         GPIO.cleanup()
