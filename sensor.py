@@ -76,16 +76,11 @@ class Sensor:
 
         # front distance (cm)
         distance = self.distance_measure()
-        print("%.2f cm" % distance)
+        # print("%.2f cm" % distance)
 
-        if distance < 4:
+        if distance < 5:
             return 'backward'
         elif distance > 15:
             return 'forward'
         else:
             return 'slow_forward'
-
-        # if not left and not right:
-        #     return 'backward'
-        # if left and right:
-        #     return 'forward'
