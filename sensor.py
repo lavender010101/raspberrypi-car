@@ -64,7 +64,7 @@ class Sensor:
         # distance = time_span * 340m / 2
         return time_span * 17150
 
-    def avoid_obstacles(self):
+    def avoid_obstacles(self,keep_distance):
         # GPIO.output(self.US_T, True)
         # front = GPIO.input(self.US_R) == GPIO.LOW
         distance = self.distance_measure()
@@ -75,15 +75,15 @@ class Sensor:
         elif not left and right:
             return 'turn_right'
         elif not left and not right:
-            if distance < 10:
+            if distance < keep_distance:
                 return 'stop'
 
         # front distance (cm)
         # print("%.2f cm" % distance)
 
-        if distance < 5:
+        if distance < keep_distance:
             return 'backward'
-        elif distance > 15:
+        elif distance > keep_distance + 10:
             return 'forward'
         else:
             return 'slow_forward'

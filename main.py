@@ -45,19 +45,19 @@ def track(speed):
     time.sleep(0.008)
 
 
-def avoid(speed):
-    if sensor.avoid_obstacles() == 'turn_left':
+def avoid(speed, distance):
+    if sensor.avoid_obstacles(distance) == 'turn_left':
         car.turn_left(speed, 0)
-    elif sensor.avoid_obstacles() == 'turn_right':
+    elif sensor.avoid_obstacles(distance) == 'turn_right':
         car.turn_right(speed, 0)
-    elif sensor.avoid_obstacles() == 'forward':
+    elif sensor.avoid_obstacles(distance) == 'forward':
         car.forward(speed, 0)
-    elif sensor.avoid_obstacles() == 'backward':
+    elif sensor.avoid_obstacles(distance) == 'backward':
         # car.forward(speed, 0)
         car.backward(speed, 0)
-    elif sensor.avoid_obstacles() == 'slow_forward':
+    elif sensor.avoid_obstacles(distance) == 'slow_forward':
         car.forward(speed * 0.8, 0)
-    elif sensor.avoid_obstacles() == 'stop':
+    elif sensor.avoid_obstacles(distance) == 'stop':
         car.stop(0)
     time.sleep(0.08)
 
@@ -82,8 +82,8 @@ if __name__ == '__main__':
         while start:
             # while True:
             # track(25)
-            # avoid(25)
-            print("%.2f cm" % sensor.distance_measure())
+            avoid(25, 13)
+            # print("%.2f cm" % sensor.distance_measure())
             # print(sensor.avoid_obstacles())
             time.sleep(1)
 
