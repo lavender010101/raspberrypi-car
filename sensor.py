@@ -64,7 +64,7 @@ class Sensor:
         # distance = time_span * 340m / 2
         return time_span * 17150
 
-    def avoid_obstacles(self,keep_distance):
+    def avoid_obstacles(self, keep_distance):
         # GPIO.output(self.US_T, True)
         # front = GPIO.input(self.US_R) == GPIO.LOW
         distance = self.distance_measure()
@@ -82,7 +82,7 @@ class Sensor:
         # print("%.2f cm" % distance)
 
         if distance < keep_distance:
-            return 'backward'
+            return 'stop'
         elif distance > keep_distance + 10:
             return 'forward'
         else:
