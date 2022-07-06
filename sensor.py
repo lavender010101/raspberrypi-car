@@ -75,6 +75,7 @@ class Sensor:
             return 'turn_right'
 
         # front distance (cm)
+        print('straight')
         distance = self.distance_measure()
 
         if distance < 2:
