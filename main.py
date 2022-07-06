@@ -62,12 +62,11 @@ def avoid(speed):
     time.sleep(0.08)
 
 
-def button_switch(start):
+def button_switch():
     while not start:
         if GPIO.input(btn_pin) == GPIO.HIGH:
-            start = True
+            break
         time.sleep(0.013)
-    return True
 
 
 if __name__ == '__main__':
@@ -75,9 +74,10 @@ if __name__ == '__main__':
     car = Vehicle(pwmA, AIN1, AIN2, pwmB, BIN1, BIN2)
     sensor = Sensor(IR_L, IR_R, IR_F_L, IR_F_R, US_T, US_R)
 
-    # click to start
     start = False
-    start = button_switch(start)
+    # click to start
+    button_switch()
+    start = True
     try:
         while start:
             # while True:
