@@ -47,7 +47,6 @@ class Sensor:
         time.sleep(0.00001)
         GPIO.output(self.US_T, False)
 
-
         miss_target_time = 0
         while GPIO.input(self.US_R) == 0:
             miss_target_time += 1
@@ -77,11 +76,11 @@ class Sensor:
 
         # front distance (cm)
         distance = self.distance_measure()
-        print("%.2f cm" % distance)
+        # print("%.2f cm" % distance)
 
-        if distance < 2:
+        if distance < 4:
             return 'backward'
-        elif distance > 5:
+        elif distance > 15:
             return 'forward'
         else:
             return 'slow_forward'
