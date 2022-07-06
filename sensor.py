@@ -47,7 +47,6 @@ class Sensor:
         time.sleep(0.00001)
         GPIO.output(self.US_T, False)
 
-        start_time = time.time()
 
         miss_target_time = 0
         while GPIO.input(self.US_R) == 0:
@@ -55,6 +54,8 @@ class Sensor:
             if miss_target_time > 10000:
                 print('Missing the echo')
                 return 0
+
+        start_time = time.time()
 
         while GPIO.input(self.US_R) == 1:
             pass
