@@ -83,8 +83,8 @@ if __name__ == '__main__':
             # while True:
             # track(25)
             # avoid(25)
-            # print(sensor.distance_measure())
-            print(sensor.avoid_obstacles())
+            print("%.2f cm" % sensor.distance_measure())
+            # print(sensor.avoid_obstacles())
             time.sleep(1)
 
     except KeyboardInterrupt:
