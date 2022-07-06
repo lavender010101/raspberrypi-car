@@ -92,10 +92,10 @@ if __name__ == '__main__':
     time.sleep(0.5)
     while True:
         # setServoPulse(2,2500)
-        for i in range(500, 2500, 10):
+        for i in range(510, 2490, 11):
             pwm.setServoPulse(12, i)
             time.sleep(0.02)
 
-        for i in range(2500, 500, -10):
+        for i in range(2490, 510, -11):
             pwm.setServoPulse(12, i)
             time.sleep(0.02)
