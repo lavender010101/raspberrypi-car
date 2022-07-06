@@ -67,15 +67,18 @@ class Sensor:
     def avoid_obstacles(self):
         # GPIO.output(self.US_T, True)
         # front = GPIO.input(self.US_R) == GPIO.LOW
+        distance = self.distance_measure()
         left = GPIO.input(self.IR_L) == GPIO.HIGH
         right = GPIO.input(self.IR_R) == GPIO.HIGH
         if left and not right:
             return 'turn_left'
         elif not left and right:
             return 'turn_right'
+        elif not left and not right:
+            if distance < 10:
+                return 'stop'
 
         # front distance (cm)
-        distance = self.distance_measure()
         # print("%.2f cm" % distance)
 
         if distance < 5:
