@@ -92,12 +92,17 @@ if __name__ == '__main__':
     for i in range(1500, 510, -11):
         pwm.setServoPulse(12, i)
         time.sleep(0.02)
-    while True:
-        # setServoPulse(2,2500)
-        for i in range(510, 2490, 11):
-            pwm.setServoPulse(12, i)
-            time.sleep(0.02)
+    try:
+        while True:
+            # setServoPulse(2,2500)
+            for i in range(510, 2490, 11):
+                pwm.setServoPulse(12, i)
+                time.sleep(0.02)
 
-        for i in range(2490, 510, -11):
-            pwm.setServoPulse(12, i)
-            time.sleep(0.02)
+            for i in range(2490, 510, -11):
+                pwm.setServoPulse(12, i)
+                time.sleep(0.02)
+    except KeyboardInterrupt:
+        print("exit by keyboard interrupt")
+    finally:
+        GPIO.cleanup()
