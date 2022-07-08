@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
-import pylirc, time
+# import pylirc, time
+import lirc
 import RPi.GPIO as GPIO
 
 Rpin = 17
