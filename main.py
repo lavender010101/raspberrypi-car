@@ -96,7 +96,15 @@ if __name__ == '__main__':
             # print("%.2f cm" % sensor.distance_measure())
             # print(sensor.avoid_obstacles())
 
-            time.sleep(1)
+            for i in range(510, 2490, 11):
+                pwm.setServoPulse(12, i)
+                time.sleep(0.02)
+
+            for i in range(2490, 510, -11):
+                pwm.setServoPulse(12, i)
+                time.sleep(0.02)
+
+            # time.sleep(1)
 
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")
