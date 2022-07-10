@@ -98,11 +98,11 @@ if __name__ == '__main__':
 
             for i in range(510, 2490, 11):
                 pwm.setServoPulse(13, i)
-                time.sleep(0.02)
+                time.sleep(0.01)
 
             for i in range(2490, 510, -11):
                 pwm.setServoPulse(13, i)
-                time.sleep(0.02)
+                time.sleep(0.01)
 
             # time.sleep(1)
 
