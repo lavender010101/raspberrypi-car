@@ -25,6 +25,9 @@ US_R = 40
 # button
 btn_pin = 35
 
+vertical_angle = 500
+orient_angle = 1500
+
 
 def global_setup():
     GPIO.setmode(GPIO.BOARD)
@@ -35,9 +38,6 @@ def global_setup():
     # pwm.set_pwm_freq(50)
     pwm = PCA9685(0x40)
     pwm.setPWMFreq(50)
-
-    vertical_angle = 500
-    orient_angle = 1500
 
     pwm.setServoPulse(13, orient_angle)
     pwm.setServoPulse(14, vertical_angle)
