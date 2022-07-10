@@ -37,7 +37,7 @@ def global_setup():
     pwm.setPWMFreq(50)
 
     pwm.setServoPulse(13, 1500)
-    pwm.setServoPulse(14, 1500)
+    pwm.setServoPulse(14, 2000)
 
 
 def servo_control(servo, angle, interval):
