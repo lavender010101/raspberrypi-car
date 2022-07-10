@@ -45,7 +45,7 @@ class CarServo:
             print("channel={0}, angle={1}".format(channel, new_angle))
             # date=4096*((new_angle*11)+500)/20000#进行四舍五入运算 date=int(4096*((angle*11)+500)/(20000)+0.5)
             date = int(4096 * ((new_angle * 11) + 500) / (20000) + 0.5)
-            self.pwm_pca9685.set_pwm(channel, 0, date)
+            self.pwm_pca9685.set_pwm(channel + 12, 0, date)
             self.servo[channel] = new_angle
         else:
             print("set_servo_angle error. servo[{0}] = [{1}]".format(
