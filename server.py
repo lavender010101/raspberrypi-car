@@ -36,8 +36,11 @@ def global_setup():
     pwm = PCA9685(0x40)
     pwm.setPWMFreq(50)
 
-    pwm.setServoPulse(13, 1500)
-    pwm.setServoPulse(14, 2000)
+    vertical_angle = 500
+    orient_angle = 1500
+
+    pwm.setServoPulse(13, orient_angle)
+    pwm.setServoPulse(14, vertical_angle)
 
 
 def servo_control(servo, angle, interval):
@@ -73,12 +76,20 @@ if __name__ == '__main__':
             elif action == 'stop':
                 print('stop')
             elif action == 'servo_up':
+                vertical_angle -= 12
+                pwm.setServoPulse(14, vertical_angle)
                 print('servo_up')
             elif action == 'servo_down':
+                vertical_angle += 12
+                pwm.setServoPulse(14, vertical_angle)
                 print('servo_down')
             elif action == 'servo_turn_left':
+                orient_angle -= 12
+                pwm.setServoPulse(13, orient_angle)
                 print('servo_turn_left')
             elif action == 'servo_turn_right':
+                orient_angle += 12
+                pwm.setServoPulse(13, orient_angle)
                 print('servo_turn_right')
             elif action.isdigit():
                 # speed = eval(action)
