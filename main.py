@@ -96,11 +96,11 @@ if __name__ == '__main__':
             # print("%.2f cm" % sensor.distance_measure())
             # print(sensor.avoid_obstacles())
 
-            for i in range(510, 2490, 11):
+            for i in range(510, 2490, 22):
                 pwm.setServoPulse(13, i)
                 time.sleep(0.005)
 
-            for i in range(2490, 510, -11):
+            for i in range(2490, 510, -22):
                 pwm.setServoPulse(13, i)
                 time.sleep(0.005)
 
