@@ -78,19 +78,23 @@ if __name__ == '__main__':
             elif action == 'servo_up':
                 vertical_angle -= 12
                 pwm.setServoPulse(14, vertical_angle)
-                print('servo_up')
+                time.sleep(0.002)
+                # print('servo_up')
             elif action == 'servo_down':
                 vertical_angle += 12
                 pwm.setServoPulse(14, vertical_angle)
-                print('servo_down')
+                time.sleep(0.002)
+                # print('servo_down')
             elif action == 'servo_turn_left':
-                orient_angle -= 12
-                pwm.setServoPulse(13, orient_angle)
-                print('servo_turn_left')
-            elif action == 'servo_turn_right':
                 orient_angle += 12
                 pwm.setServoPulse(13, orient_angle)
-                print('servo_turn_right')
+                time.sleep(0.002)
+                # print('servo_turn_left')
+            elif action == 'servo_turn_right':
+                orient_angle -= 12
+                pwm.setServoPulse(13, orient_angle)
+                time.sleep(0.002)
+                # print('servo_turn_right')
             elif action.isdigit():
                 # speed = eval(action)
                 print('change speed')
