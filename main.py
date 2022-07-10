@@ -97,11 +97,11 @@ if __name__ == '__main__':
             # print(sensor.avoid_obstacles())
 
             for i in range(510, 2490, 11):
-                pwm.setServoPulse(12, i)
+                pwm.setServoPulse(13, i)
                 time.sleep(0.02)
 
             for i in range(2490, 510, -11):
-                pwm.setServoPulse(12, i)
+                pwm.setServoPulse(13, i)
                 time.sleep(0.02)
 
             # time.sleep(1)
