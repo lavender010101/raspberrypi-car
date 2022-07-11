@@ -30,6 +30,9 @@ vertical_angle = 500
 orient_angle = 1500
 
 control_mode = 'pc_control'
+# ip_port = ('', 7878)  # 留空才能接收来自局域网的UDP连接
+# sk = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, 0)  # 创建套接字
+# sk.bind(ip_port)  # 绑定服务地址
 
 server_host = '0.0.0.0'
 server_port = 2022
@@ -94,11 +97,6 @@ def pc_control(action, car, vertical_angle, orient_angle):
         print('change speed')
 
     return vertical_angle, orient_angle
-
-
-ip_port = ('', 7878)  # 留空才能接收来自局域网的UDP连接
-sk = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, 0)  # 创建套接字
-sk.bind(ip_port)  # 绑定服务地址
 
 
 def app_control(client_data, car, cs):
