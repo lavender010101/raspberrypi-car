@@ -63,45 +63,37 @@ if __name__ == '__main__':
 
         while True:
             action = client_socket.recv(1024).decode('utf-8')
-            # print(action)
 
             if action == 'forward':
-                print('forward')
+                car.forward(30, 0)
             elif action == 'backward':
-                print('backward')
+                car.backward(30, 0)
             elif action == 'turn_left':
-                print('turn_left')
+                car.turn_left(30, 0)
             elif action == 'turn_right':
-                print('turn_right')
+                car.turn_right(30, 0)
             elif action == 'stop':
-                print('stop')
+                car.stop(0)
             elif action == 'servo_up':
-                vertical_angle -= 5
+                vertical_angle -= 12
                 pwm.setServoPulse(14, vertical_angle)
                 time.sleep(0.008)
-                # print('servo_up')
             elif action == 'servo_down':
-                vertical_angle += 5
+                vertical_angle += 12
                 pwm.setServoPulse(14, vertical_angle)
                 time.sleep(0.008)
-                # print('servo_down')
             elif action == 'servo_turn_left':
-                orient_angle += 5
+                orient_angle += 12
                 pwm.setServoPulse(13, orient_angle)
                 time.sleep(0.008)
-                # print('servo_turn_left')
             elif action == 'servo_turn_right':
-                orient_angle -= 5
+                orient_angle -= 12
                 pwm.setServoPulse(13, orient_angle)
                 time.sleep(0.008)
-                # print('servo_turn_right')
             elif action.isdigit():
-                # speed = eval(action)
                 print('change speed')
             elif action == 'exit':
                 break
-
-        pass
     except KeyboardInterrupt:
         print("exit by keyboard interrupt")
     finally:
