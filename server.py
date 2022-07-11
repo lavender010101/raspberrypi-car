@@ -64,6 +64,7 @@ if __name__ == "__main__":
         while True:
             # 接收遥控命令,使用字符串分割来接收多个命令参数
             order = client_socket.recv(1024).strip().decode()
+            order = order.split(',')
             print(order)
 
             device = order[0]
