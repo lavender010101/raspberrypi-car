@@ -68,6 +68,8 @@ if __name__ == "__main__":
 
             device = order[0]
             action = order[1]
+            print('device = ' + device)
+            print('action = ' + action)
             if device == 'car':
                 speed = int(order[2])
                 if action == 'forward':
