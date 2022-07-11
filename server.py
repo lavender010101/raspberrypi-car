@@ -5,6 +5,7 @@ from sensor import *
 # from servo import *
 # from PCA9685 import PCA9685
 from servo import Servo
+import threading
 
 pwmA = 12
 AIN1 = 15
@@ -44,6 +45,35 @@ def global_setup():
     # pwm.setServoPulse(14, vertical_angle)
 
 
+def car_handler(car, servo, order):
+    device = order[0]
+    action = order[1]
+    print('device = ' + device)
+    print('action = ' + action)
+    if device == 'car':
+        speed = int(order[2])
+        if action == 'forward':
+            car.forward(speed, 0)
+        elif action == 'backward':
+            car.backward(speed, 0)
+        elif action == 'turn_left':
+            car.turn_left(speed, 0)
+        elif action == 'turn_right':
+            car.turn_right(speed, 0)
+        elif action == 'stop':
+            car.stop(0)
+    elif device == 'servo':
+        angle = int(order[2])
+        if action == 'up':
+            servo.desc_servo_angle(2, angle)
+        elif action == 'down':
+            servo.asc_servo_angle(2, angle)
+        elif action == 'left':
+            servo.asc_servo_angle(1, angle)
+        elif action == 'right':
+            servo.desc_servo_angle(1, angle)
+
+
 if __name__ == "__main__":
     print('启动socket服务，等待客户端连接...')
     global_setup()
@@ -55,45 +85,23 @@ if __name__ == "__main__":
     ip_port = ('0.0.0.0', 7878)
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  # 创建套接字
     server_socket.bind(ip_port)  # 绑定服务地址
-    server_socket.listen()
-
-    client_socket, _ = server_socket.accept()
+    server_socket.listen(10)
 
     try:
 
         while True:
+            client_socket, _ = server_socket.accept()
             # 接收遥控命令,使用字符串分割来接收多个命令参数
-            order = client_socket.recv(1024).strip().decode()
-            order = order.split(',')
-            print(order)
+            order = client_socket.recv(1024).strip().decode().split(',')
+            # order = order.
+            # print(order)
+            # car_handler(car, servo, order)
+            thread = threading.Thread(target=car_handler,
+                                      args=(car, servo, order))
+            thread.setDaemon(True)
+            thread.start()
 
-            device = order[0]
-            action = order[1]
-            print('device = ' + device)
-            print('action = ' + action)
-            if device == 'car':
-                speed = int(order[2])
-                if action == 'forward':
-                    car.forward(speed, 0)
-                elif action == 'backward':
-                    car.backward(speed, 0)
-                elif action == 'turn_left':
-                    car.turn_left(speed, 0)
-                elif action == 'turn_right':
-                    car.turn_right(speed, 0)
-                elif action == 'stop':
-                    car.stop(0)
-            elif device == 'servo':
-                angle = int(order[2])
-                if action == 'up':
-                    servo.desc_servo_angle(2, angle)
-                elif action == 'down':
-                    servo.asc_servo_angle(2, angle)
-                elif action == 'left':
-                    servo.asc_servo_angle(1, angle)
-                elif action == 'right':
-                    servo.desc_servo_angle(1, angle)
     finally:
         GPIO.cleanup()
         server_socket.close()
-        client_socket.close()
+        # client_socket.close()
