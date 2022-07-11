@@ -46,34 +46,37 @@ def global_setup():
 
 
 def car_handler(car, servo, client_socket):
-    # 接收遥控命令,使用字符串分割来接收多个命令参数
-    order = client_socket.recv(1024).strip().decode().split(',')
-    device = order[0]
-    action = order[1]
-    print('device = ' + device)
-    print('action = ' + action)
-    if device == 'car':
-        speed = int(order[2])
-        if action == 'forward':
-            car.forward(speed, 0)
-        elif action == 'backward':
-            car.backward(speed, 0)
-        elif action == 'turn_left':
-            car.turn_left(speed, 0)
-        elif action == 'turn_right':
-            car.turn_right(speed, 0)
-        elif action == 'stop':
-            car.stop(0)
-    elif device == 'servo':
-        angle = int(order[2])
-        if action == 'up':
-            servo.desc_servo_angle(2, angle)
-        elif action == 'down':
-            servo.asc_servo_angle(2, angle)
-        elif action == 'left':
-            servo.asc_servo_angle(1, angle)
-        elif action == 'right':
-            servo.desc_servo_angle(1, angle)
+    while True:
+        # 接收遥控命令,使用字符串分割来接收多个命令参数
+        order = client_socket.recv(1024).strip().decode().split(',')
+        if order[0] == 'exit':
+            break
+        device = order[0]
+        action = order[1]
+        print('device = ' + device)
+        print('action = ' + action)
+        if device == 'car':
+            speed = int(order[2])
+            if action == 'forward':
+                car.forward(speed, 0)
+            elif action == 'backward':
+                car.backward(speed, 0)
+            elif action == 'turn_left':
+                car.turn_left(speed, 0)
+            elif action == 'turn_right':
+                car.turn_right(speed, 0)
+            elif action == 'stop':
+                car.stop(0)
+        elif device == 'servo':
+            angle = int(order[2])
+            if action == 'up':
+                servo.desc_servo_angle(2, angle)
+            elif action == 'down':
+                servo.asc_servo_angle(2, angle)
+            elif action == 'left':
+                servo.asc_servo_angle(1, angle)
+            elif action == 'right':
+                servo.desc_servo_angle(1, angle)
 
 
 if __name__ == "__main__":
