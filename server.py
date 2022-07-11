@@ -89,9 +89,9 @@ if __name__ == "__main__":
                     servo.desc_servo_angle(2, angle)
                 elif action == 'down':
                     servo.asc_servo_angle(2, angle)
-                elif action == 'turn_left':
+                elif action == 'left':
                     servo.asc_servo_angle(1, angle)
-                elif action == 'turn_right':
+                elif action == 'right':
                     servo.desc_servo_angle(1, angle)
     finally:
         GPIO.cleanup()
