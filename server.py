@@ -68,7 +68,7 @@ if __name__ == "__main__":
             device = order[0]
             action = order[1]
             if device == 'car':
-                speed = order[2]
+                speed = int(order[2])
                 if action == 'forward':
                     car.forward(speed, 0)
                 elif action == 'backward':
@@ -80,7 +80,7 @@ if __name__ == "__main__":
                 elif action == 'stop':
                     car.stop(0)
             elif device == 'servo':
-                angle = order[2]
+                angle = int(order[2])
                 if action == 'up':
                     servo.desc_servo_angle(14, angle)
                 elif action == 'down':
