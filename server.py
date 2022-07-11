@@ -86,13 +86,13 @@ if __name__ == "__main__":
             elif device == 'servo':
                 angle = int(order[2])
                 if action == 'up':
-                    servo.desc_servo_angle(14, angle)
+                    servo.desc_servo_angle(2, angle)
                 elif action == 'down':
-                    servo.asc_servo_angle(14, angle)
+                    servo.asc_servo_angle(2, angle)
                 elif action == 'turn_left':
-                    servo.asc_servo_angle(13, angle)
+                    servo.asc_servo_angle(1, angle)
                 elif action == 'turn_right':
-                    servo.desc_servo_angle(13, angle)
+                    servo.desc_servo_angle(1, angle)
     finally:
         GPIO.cleanup()
         server_socket.close()
