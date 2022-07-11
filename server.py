@@ -45,7 +45,9 @@ def global_setup():
     # pwm.setServoPulse(14, vertical_angle)
 
 
-def car_handler(car, servo, order):
+def car_handler(car, servo, client_socket):
+    # 接收遥控命令,使用字符串分割来接收多个命令参数
+    order = client_socket.recv(1024).strip().decode().split(',')
     device = order[0]
     action = order[1]
     print('device = ' + device)
@@ -91,13 +93,11 @@ if __name__ == "__main__":
 
         while True:
             client_socket, _ = server_socket.accept()
-            # 接收遥控命令,使用字符串分割来接收多个命令参数
-            order = client_socket.recv(1024).strip().decode().split(',')
-            # order = order.
+            # order = order
             # print(order)
             # car_handler(car, servo, order)
             thread = threading.Thread(target=car_handler,
-                                      args=(car, servo, order))
+                                      args=(car, servo, client_socket))
             thread.setDaemon(True)
             thread.start()
 
